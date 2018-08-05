@@ -68,13 +68,13 @@ func (cfg *Config) toCS() *configsets {
 // toSet converts a slice of strings into a set
 func toSet(s []string) set.Interface {
 	if s == nil {
-		return set.NewNonTS()
+		return set.New(set.NonThreadSafe)
 	}
 	is := make([]interface{}, len(s))
 	for i, s := range s {
 		is[i] = s
 	}
-	set := set.NewNonTS()
+	set := set.New(set.NonThreadSafe)
 	set.Add(is...)
 	return set
 }
